@@ -14,7 +14,7 @@ services:
     
   wordpress_tshirt:
     depends_on:
-      - db
+      - db_tshirt
     image: wordpress:latest
     volumes:
       - /data/bongbenh/wordpress:/var/www/html
