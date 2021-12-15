@@ -4,8 +4,10 @@ services:
   db_tshirt:
     image: mysql:5.7
     volumes:
-      - /data/bongbenh/mysql:/var/lib/mysql
+      - /data/tshirt/mysql:/var/lib/mysql
     restart: always
+    ports:
+      - "3307:3307"
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
@@ -17,7 +19,7 @@ services:
       - db_tshirt
     image: wordpress:latest
     volumes:
-      - /data/bongbenh/wordpress:/var/www/html
+      - /data/tshirt/wordpress:/var/www/html
     ports:
       - "8100:80"
     restart: always
