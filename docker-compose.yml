@@ -1,7 +1,7 @@
 version: "3.3"
     
 services:
-  db:
+  db_tshirt:
     image: mysql:5.7
     volumes:
       - /data/bongbenh/mysql:/var/lib/mysql
@@ -12,7 +12,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
     
-  wordpress:
+  wordpress_tshirt:
     depends_on:
       - db
     image: wordpress:latest
