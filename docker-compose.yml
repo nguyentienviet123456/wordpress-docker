@@ -1,31 +1,31 @@
 version: "3.3"
     
 services:
-  db_tshirt:
+  db:
     image: mysql:5.7
     volumes:
-      - /data/tshirt/mysql:/var/lib/mysql
+      - /data/bongbenh/mysql:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
-      MYSQL_DATABASE: tshirt
+      MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
     
-  wordpress_tshirt:
+  wordpress:
     depends_on:
-      - db_tshirt
+      - db
     image: wordpress:latest
     volumes:
-      - /data/tshirt/wordpress:/var/www/html
+      - /data/bongbenh/wordpress:/var/www/html
     ports:
-      - "8100:80"
+      - "8000:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: db_tshirt:3306
+      WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: tshirt
+      WORDPRESS_DB_NAME: wordpress
 volumes:
-  db_tshirt_data: {}
-  wordpress_tshirt_data: {}
+  db_data: {}
+  wordpress_data: {}
