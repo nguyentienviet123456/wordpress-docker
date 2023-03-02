@@ -4,7 +4,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - /data/bongbenh/mysql:/var/lib/mysql
+      - /data/vietexpo/mysql:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
@@ -17,12 +17,12 @@ services:
       - db
     image: wordpress:latest
     volumes:
-      - /data/bongbenh/wordpress:/var/www/html
+      - /data/vietexpo/wordpress:/var/www/html
     ports:
-      - "8000:80"
+      - "8888:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: db:3307
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
