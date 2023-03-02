@@ -11,6 +11,9 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
+    expose:
+      - 3307
+      - 33070
     
   wordpress:
     depends_on:
