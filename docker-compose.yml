@@ -1,7 +1,7 @@
 version: "3.3"
     
 services:
-  db:
+  db_vietexpo:
     image: mysql:5.7
     volumes:
       - /data/vietexpo/mysql:/var/lib/mysql
@@ -11,15 +11,10 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-    ports:
-      - "3307:3306"
-    # expose:
-    #   - 3307
-    #   - 33070
     
-  wordpress:
+  wordpress_vietexpo:
     depends_on:
-      - db
+      - db_vietexpo
     image: wordpress:latest
     volumes:
       - /data/vietexpo/wordpress:/var/www/html
@@ -27,7 +22,7 @@ services:
       - "8888:80"
     restart: always
     environment:
-      WORDPRESS_DB_HOST: db:3307
+      WORDPRESS_DB_HOST: db_vietexpo:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
